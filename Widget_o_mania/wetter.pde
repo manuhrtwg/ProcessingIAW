@@ -15,9 +15,12 @@ class wetter {
   float lat = 48.78;
   float lon = 9.18;
 
-  void wetterVorhersage() {
- 
-  }
+
+
+
+
+
+  
   
   
   void drawTabelle() {
@@ -65,7 +68,7 @@ class wetter {
     pressure = wetterHeute.getJSONObject("main").getFloat("pressure");
     beschreibung = wetterHeute.getJSONArray("weather").getJSONObject(0).getString("description");
     
-    println(wetterHeute);
+    //println(wetterHeute);
   }
 
   void drawWetterHeute() {

@@ -1,5 +1,8 @@
 import ddf.minim.*;
 
+JSONArray wettervorhersageTemp;
+JSONObject wetter_temp;
+
 String apikey= "1100de2b457cd201f814651dded49806";
 
 
@@ -107,26 +110,26 @@ void setup() {
     radioImgListe[i] = sender.getString("img");
   }
   
-  JSONObject wetterVorhersage = loadJSONObject("http://api.openweathermap.org/data/2.5/forecast?lat="
-      + lat +"&lon=" + lon + "&appid=" + apikey +"&units=metric&lang=de"); 
+  //JSONObject wetterVorhersage = loadJSONObject("http://api.openweathermap.org/data/2.5/forecast?lat="
+  //    + lat +"&lon=" + lon + "&appid=" + apikey +"&units=metric&lang=de"); 
 
-    JSONArray wettervorhersageTemp = new JSONArray(); 
-    int x = 0;
-      for (int i = 0; i < wetterVorhersage.getJSONArray("list").size(); i++) {
-    JSONObject wetter_temp = wetterVorhersage.getJSONArray("list").getJSONObject(i);
-    if ( wetter_temp.getString("dt_txt").contains("12:00:00") ) {
-      wettervorhersageTemp.setJSONObject(x, wetter_temp);
-      x++;
-    }
-  }
+  //  JSONArray wettervorhersageTemp = new JSONArray(); 
+  //  int x = 0;
+  //    for (int i = 0; i < wetterVorhersage.getJSONArray("list").size(); i++) {
+  //  JSONObject wetter_temp = wetterVorhersage.getJSONArray("list").getJSONObject(i);
+  //  if ( wetter_temp.getString("dt_txt").contains("12:00:00") ) {
+  //    wettervorhersageTemp.setJSONObject(x, wetter_temp);
+  //    x++;
+  //  }
+  //}
     
     
     
-    for (int i = 0; i < wetterVorhersage.size(); i++) {
+  //  for (int i = 0; i < wetterVorhersage.size(); i++) {
       
-      println(wettervorhersageTemp.getJSONObject(i).getJSONObject("main").getFloat("temp"));
+  //    println(wettervorhersageTemp.getJSONObject(i).getJSONObject("main").getFloat("temp"));
     
-    }
+  //  }
     
     
     
@@ -219,7 +222,11 @@ void setup() {
   digitalClockBig = new clock(40, 300, 2.2, 255);
   analogClock = new clock(110, 320, 2.4, 100);
 
-  wetter.wetterVorhersage();
+  wetterB0.wetterVorhersage();
+  wetterB1.wetterVorhersage();
+  wetterB2.wetterVorhersage();
+  wetterB3.wetterVorhersage();
+  wetterB4.wetterVorhersage();
   wetter.wetterHeute();
 };
 
