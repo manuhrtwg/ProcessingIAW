@@ -1,0 +1,34 @@
+[
+{
+"name": "Radio Free FM",
+"url": "http://stream.freefm.de",
+"genre": "Alternative"
+},
+{
+    "name": "SWR 3",
+    "url": "http://swr-swr3-live.cast.addradio.de/swr/swr3/live/mp3/128/stream.mp3",
+    "genre": "Charts"
+  },
+  {
+    "name": "BigFM",
+    "url": "http://streams.bigfm.de/bigfm-deutschland-128-mp3",
+    "genre": "Charts"
+  },
+{
+"name": "DasDing",
+"url": "http://swr-dasding-live.cast.addradio.de/swr/dasding/live/mp3/128/stream.mp3?ar-distributor=f0b2",
+"genre": "Charts"
+},
+{
+"name": "Jazz Radio Berlin",
+"url": "http://streaming.radio.co/s774887f7b/listen",
+"genre": "Jazz & Soul"
+},
+{
+"name": "Radio Bob",
+"url": "http://streams.radiobob.de/bob-live/mp3-192/mediaplayer",
+"genre": "Rock"
+}
+
+
+]
