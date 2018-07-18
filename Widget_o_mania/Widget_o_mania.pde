@@ -111,8 +111,20 @@ void setup() {
       + lat +"&lon=" + lon + "&appid=" + apikey +"&units=metric&lang=de"); 
 
     JSONArray wettervorhersageTemp = new JSONArray(); 
+    int x = 0;
+      for (int i = 0; i < wetterVorhersage.getJSONArray("list").size(); i++) {
+    JSONObject wetter_temp = wetterVorhersage.getJSONArray("list").getJSONObject(i);
+    if ( wetter_temp.getString("dt_txt").contains("12:00:00") ) {
+      wettervorhersageTemp.setJSONObject(x, wetter_temp);
+      x++;
+    }
+  }
+    
+    
+    
     for (int i = 0; i < wetterVorhersage.size(); i++) {
-      //println(wetterVorhersage.getJSONObject(i).getJSONObject("main").getFloat("temp"));
+      
+      println(wettervorhersageTemp.getJSONObject(i).getJSONObject("main").getFloat("temp"));
     
     }
     
