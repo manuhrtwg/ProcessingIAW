@@ -24,22 +24,7 @@ class suchfeld {
     br = (width/2)-25;
     hoe = 40;
     
-    //radio0 = trim(radioNamenListe[0]);
-    //radio1 = trim(radioNamenListe[1]);
-    //radio2 = trim(radioNamenListe[2]);
-    //radio3 = trim(radioNamenListe[3]);
-    //radio4 = trim(radioNamenListe[4]);
-    //radio5 = trim(radioNamenListe[5]);
     
-    
-     
-     
-    //radio0 = "hoho";
-    //radio1 = "hihih";
-    // radio2 = "hohoh";
-    // radio3 = "hihihi";
-    // radio4 = "ahahah";
-    // radio5 = "pfpfp";
     
   }
 
@@ -108,7 +93,7 @@ textSize(29);
     String radio4 = radio44.toLowerCase();
     String radio5 = radio55.toLowerCase();
     
-    println(radio0);
+    //println(radio0);
     
 
     txtLow = trim(txt.toLowerCase());
@@ -117,17 +102,28 @@ textSize(29);
       //println(txtLow);
       if (txtLow.contains(radio0)) {
         radioControl = 0;
-        rect(500,500,500,500);
+        active=false;
+        txt = "Suchen";
       } else if (txtLow.equals(radio1) == true) {
         radioControl = 1;
+        active=false;
+        txt = "Suchen";
       } else if (txtLow.equals(radio2) == true) {
         radioControl = 2;
+        active=false;
+        txt = "Suchen";
       } else if (txtLow.equals(radio3) == true) {
         radioControl = 3;
+        active=false;
+        txt = "Suchen";
       } else if (txtLow.equals(radio4) == true) {
         radioControl = 4;
+        active=false;
+        txt = "Suchen";
       } else if (txtLow.equals(radio5) == true) {
         radioControl = 5;
+        active=false;
+        txt = "Suchen";
       } 
 
       if (txtLow.equals(radio0) != true && txtLow.equals(radio1) != true && txtLow.equals(radio2) != true && txtLow.equals(radio3) != true 

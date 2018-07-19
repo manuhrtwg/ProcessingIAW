@@ -54,7 +54,7 @@ class wetterButton {
       wetterBeschr = wettervorhersageTemp.getJSONObject(wetterC).getJSONArray("weather").getJSONObject(0).getString("description");
       
       iconWetterID = wettervorhersageTemp.getJSONObject(wetterC).getJSONArray("weather").getJSONObject(0).getString("icon");
-       println(wettervorhersageTemp.getJSONObject(wetterC).getJSONObject("main").getFloat("temp"));
+       //println(wettervorhersageTemp.getJSONObject(wetterC).getJSONObject("main").getFloat("temp"));
     iconWetterURL = iconWetterID +".svg"; 
     
     iconWetter = loadShape(iconWetterURL); 
@@ -70,8 +70,8 @@ class wetterButton {
  
  
  
-    println(wettertemp);
-    println(tempMap);
+    //println(wettertemp);
+    //println(tempMap);
    
   }
 
