@@ -6,22 +6,33 @@ class wetterButton {
   int hoe;
   int br;
   float wettertemp;
-  int month=month();
-  int day;
+  
   
   String wetterBeschr;
   PShape iconWetter;
   String iconWetterID;
   String iconWetterURL;
+  
+  int Ymax ;
+   int Ymin ;
+   int Xmin ;
+   int Xmax ;
+   float tempMap;
+   float tempRandom1;
+   float tempRandom2;
+   
   wetterButton(int x, int c) {
     
     wetterC = c;
-    //wettertemp = wettervorhersageTemp.getFloat(c);
     xpos = x;
     ypos = 340;
     br= 170;
     hoe=150;
-    day = day() + 1+c;
+
+    Ymax = 162;
+    Ymin = 283;
+    Xmin = 400;
+    Xmax = 880;
   }
   
   void wetterVorhersage() {
@@ -38,9 +49,6 @@ class wetterButton {
     }
   }
     
-    
-    
-
       wettertemp = wettervorhersageTemp.getJSONObject(wetterC).getJSONObject("main").getFloat("temp");
       
       wetterBeschr = wettervorhersageTemp.getJSONObject(wetterC).getJSONArray("weather").getJSONObject(0).getString("description");
@@ -50,9 +58,21 @@ class wetterButton {
     iconWetterURL = iconWetterID +".svg"; 
     
     iconWetter = loadShape(iconWetterURL); 
-    //}
     
-    println(wetter_temp);
+   
+   this.tempMap = map(wettertemp,-20,40,283,162);
+  
+  
+   
+    this.tempRandom1 = random(tempMap+5, tempMap+25);
+    this.tempRandom2 = random(tempMap+2,tempMap+25);
+    
+ 
+ 
+ 
+    println(wettertemp);
+    println(tempMap);
+   
   }
 
   void drawButton() {
@@ -67,7 +87,6 @@ class wetterButton {
     
     pushStyle();
 
-    //Float wettertemp = wetter.wettervorhersageTemp.getJSONObject(wetterC).getJSONObject("main").getFloat("temp");
  
  
     if (hover() || controlWetter == wetterC) {
@@ -103,13 +122,37 @@ class wetterButton {
     
     popStyle();
     
+    
   }
 
+ void tempTabelle() {
+  
+   
  
+ //println(tempMap);  
+   //println(wettertemp);
+ if (controlWetter == wetterC) {
+   
+   
+   pushStyle();
+   noFill();
+   stroke(255);
+   strokeWeight(2);
+   beginShape();
+   vertex(Xmin,tempRandom1);
+   bezierVertex(Xmin+100,tempRandom1, 600,tempMap, 671,tempMap );
+   bezierVertex(700,tempMap, 800,tempRandom2, 880,tempRandom2);
+   endShape();
+   popStyle();
+ 
+ 
+ }
+ }
   
   void click() {
   if (hover()) {
   controlWetter = wetterC;
+  
   }
   }
   

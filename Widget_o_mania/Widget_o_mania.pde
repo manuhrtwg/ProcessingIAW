@@ -7,8 +7,8 @@ JSONObject wetter_temp;
 String apikey= "1100de2b457cd201f814651dded49806";
 
 
-  float lat = 48.78;
-  float lon = 9.18;
+float lat = 48.78;
+float lon = 9.18;
 
 suchfeld suchfeld;
 
@@ -94,9 +94,9 @@ AudioPlayer weckerAlarm;
 AudioPlayer radioPlayer;
 
 void Datum() {
-Calendar cal = Calendar.getInstance();
-DateFormat formatter = new SimpleDateFormat("EEE, yyyy.MM.dd");
-System.out.println(formatter.format (cal.getTime()));
+  Calendar cal = Calendar.getInstance();
+  DateFormat formatter = new SimpleDateFormat("EEE, yyyy.MM.dd");
+  System.out.println(formatter.format (cal.getTime()));
 }
 
 void setup() {
@@ -104,7 +104,7 @@ void setup() {
   pixelDensity(displayDensity());
   smooth(2);
   minim = new Minim(this);
-  
+
   Datum();
 
   JSONArray radioListe = loadJSONArray("radioliste.json");  
@@ -116,7 +116,7 @@ void setup() {
     radioNamenListe[i] = sender.getString("name");
     radioImgListe[i] = sender.getString("img");
   }
-  
+
   //JSONObject wetterVorhersage = loadJSONObject("http://api.openweathermap.org/data/2.5/forecast?lat="
   //    + lat +"&lon=" + lon + "&appid=" + apikey +"&units=metric&lang=de"); 
 
@@ -129,28 +129,28 @@ void setup() {
   //    x++;
   //  }
   //}
-    
-    
-    
+
+
+
   //  for (int i = 0; i < wetterVorhersage.size(); i++) {
-      
+
   //    println(wettervorhersageTemp.getJSONObject(i).getJSONObject("main").getFloat("temp"));
-    
+
   //  }
-    
-    
-    
-    //int j = 0;
-    //for (int i = 0; i < wetterVorhersage.getJSONArray("list").size(); i++) {
-    //  JSONObject wetter_temp = wetterVorhersage.getJSONArray("list").getJSONObject(i);
-    //  if ( wetter_temp.getString("dt_txt").contains("12:00:00") ) {
-    //    wettervorhersage.setJSONObject(j, wetter_temp);
-    //    j++;
-    //  }
-      
-     
-    //}
-    
+
+
+
+  //int j = 0;
+  //for (int i = 0; i < wetterVorhersage.getJSONArray("list").size(); i++) {
+  //  JSONObject wetter_temp = wetterVorhersage.getJSONArray("list").getJSONObject(i);
+  //  if ( wetter_temp.getString("dt_txt").contains("12:00:00") ) {
+  //    wettervorhersage.setJSONObject(j, wetter_temp);
+  //    j++;
+  //  }
+
+
+  //}
+
   //println(wetterVorhersage);
 
   urlStream = radioListe.getJSONObject(radioControl).getString("url");
@@ -230,13 +230,13 @@ void setup() {
   analogClock = new clock(110, 320, 2.4, 100);
 
   wetterB0.wetterVorhersage();
+
+
   wetterB1.wetterVorhersage();
   wetterB2.wetterVorhersage();
   wetterB3.wetterVorhersage();
   wetterB4.wetterVorhersage();
   wetter.wetterHeute();
-  
-  
 };
 
 int screenZ = 1;
@@ -283,17 +283,17 @@ void mouseReleased() {
   }
 
   if (screenZ == 2) {
+
     wetterB0.click();
     wetterB1.click();
     wetterB2.click();
     wetterB3.click();
     wetterB4.click();
   }
-  
-  if(mouseX <140 && mouseY <50) {
-  screenZ = 1;
+
+  if (mouseX <140 && mouseY <50) {
+    screenZ = 1;
   }
-  
 }
 
 void mouseClicked() {
@@ -325,7 +325,7 @@ void draw() {
   fill(0);
   rect(0, 0, width, 50);
 
-  
+
 
   muteButton.drawMute();
 
@@ -371,12 +371,12 @@ void draw() {
     weckerAlarm.pause();
   }
 
-if(mouseX <140 && mouseY <50) {
-  shape(WeckerIcon, 42, 9, 35, 35);
+  if (mouseX <140 && mouseY <50) {
+    shape(WeckerIcon, 42, 9, 35, 35);
   } else {
-  shape(WeckerIcon, 43, 10, 33, 33);
+    shape(WeckerIcon, 43, 10, 33, 33);
   }
-  
+
 
   if (WeckerActive) {
 
@@ -495,12 +495,23 @@ if(mouseX <140 && mouseY <50) {
     wetter.drawTabelle();
     wetter.drawWetterHeute();
     wetter.drawThermometer();
+    wetter.drawGraph();
 
     wetterB0.drawButton();
+    wetterB0.tempTabelle();
+
+
     wetterB1.drawButton();
+    wetterB1.tempTabelle();
+
     wetterB2.drawButton();
+    wetterB2.tempTabelle();
+
     wetterB3.drawButton();
+    wetterB3.tempTabelle();
+
     wetterB4.drawButton();
+    wetterB4.tempTabelle();
   }
 
   if (screenZ == 3) {

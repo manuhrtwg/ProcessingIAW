@@ -111,12 +111,14 @@ boolean hover() {
  void click() {
 if(hover()) {
 active = !active;
+
 }
 } 
 
 void Playclick() {
 if(hover()) {
 play = !play;
+muteButton.active = false;
 }
 }
   

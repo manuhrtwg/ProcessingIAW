@@ -90,10 +90,11 @@ DateFormat formatter = new SimpleDateFormat("EEE, dd.MM.yyyy");
  text(":", posx+abstand*4,posy);
  text("Uhr",posx+abstand*6.4,posy);
  
- 
+ pushStyle();
  textFont(robotoLight, 30);
-
- text(simpleDate, posx+ abstand*2.5, posy+ abstand*1.5);
+textAlign(CENTER);
+ text(simpleDate, width/4, posy+ abstand*1.5);
+ popStyle();
 }
 
 
