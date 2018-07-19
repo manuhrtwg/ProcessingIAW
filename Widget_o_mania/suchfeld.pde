@@ -6,14 +6,13 @@ class suchfeld {
   String txt;
   String txtLow;
 
-
-  String radio0;
-  String radio1;
-  String radio1_1;
-  String radio2;
-  String radio3;
-  String radio4;
-  String radio5;
+  String radio00;
+  String radio11;
+  String radio22;
+  String radio33;
+  String radio44;
+  String radio55;
+  
 
   boolean active;
 
@@ -24,18 +23,32 @@ class suchfeld {
     ypos = 90;
     br = (width/2)-25;
     hoe = 40;
-    radio0 = "radio free fm";
-    radio1 = "swr 3";
-    radio1_1="swr3";
-    radio2 = "bigfm";
-    radio3 = "dasding";
-    radio4 = "jazz radio berlin";
-    radio5 = "radio bob";
+    
+    //radio0 = trim(radioNamenListe[0]);
+    //radio1 = trim(radioNamenListe[1]);
+    //radio2 = trim(radioNamenListe[2]);
+    //radio3 = trim(radioNamenListe[3]);
+    //radio4 = trim(radioNamenListe[4]);
+    //radio5 = trim(radioNamenListe[5]);
+    
+    
+     
+     
+    //radio0 = "hoho";
+    //radio1 = "hihih";
+    // radio2 = "hohoh";
+    // radio3 = "hihihi";
+    // radio4 = "ahahah";
+    // radio5 = "pfpfp";
+    
   }
 
   void drawFeld() {
     fill (30);
     rect(xpos, ypos, br, hoe,hoe/2); 
+    
+textFont(robotoRegular);
+textSize(29);
 
     if (active) {
 
@@ -54,6 +67,8 @@ class suchfeld {
     if (hover()) {
       active = true;
       txt = "";
+      controlRadioEdit = 20;
+      
     }
     if (!hover()) {
       active = false;
@@ -64,24 +79,46 @@ class suchfeld {
   } 
 
   void eingabe() {
+    
 
     if (active && keyCode == BACKSPACE) {
       txt = txt.substring(0, max(0, txt.length()-1));
     } else if (active && txt.length() < 35 && keyCode != ENTER && keyCode != SHIFT) {
-
+      
       txt = txt + key;
     }
+
   }
 
 
   void sucheGo() {
+    
+     this.radio00 = trim(radioNamenListe[0]);
+     this.radio11 = trim(radioNamenListe[1]);
+     this.radio22 = trim(radioNamenListe[2]);
+     this.radio33 = trim(radioNamenListe[3]);
+     this.radio44 = trim(radioNamenListe[4]);
+     this.radio55 = trim(radioNamenListe[5]);
+     
+     
+    String radio0 = radio00.toLowerCase();
+    String radio1 = radio11.toLowerCase();
+    String radio2 = radio22.toLowerCase();
+    String radio3 = radio33.toLowerCase();
+    String radio4 = radio44.toLowerCase();
+    String radio5 = radio55.toLowerCase();
+    
+    println(radio0);
+    
 
-    txtLow = txt.toLowerCase();
+    txtLow = trim(txt.toLowerCase());
+    
     if (active && keyPressed && key == ENTER) {
-      println(txtLow);
-      if (txtLow.equals(radio0) == true) {
+      //println(txtLow);
+      if (txtLow.contains(radio0)) {
         radioControl = 0;
-      } else if (txtLow.equals(radio1) == true || txtLow.equals(radio1_1) == true) {
+        rect(500,500,500,500);
+      } else if (txtLow.equals(radio1) == true) {
         radioControl = 1;
       } else if (txtLow.equals(radio2) == true) {
         radioControl = 2;

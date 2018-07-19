@@ -281,6 +281,7 @@ void mouseReleased() {
   weather.screenChange();
   radio.screenChange();
   suchfeld.click();
+  radioEingabe.click();
 
   if (screenZ == 1) {
     analogUhr.controlChange();
@@ -573,10 +574,9 @@ void draw() {
 
     fill(70);
 
-    rect((width/2)+5, 140, (width/2)-75, 280);
+    rect((width/2)+5, 140, (width/2)-75, 300);
 
-    suchfeld.drawFeld();
-    suchfeld.sucheGo();
+    
 
     if (controlRadioEdit == 10) {
     radioEingabe.active = true;
@@ -672,6 +672,9 @@ void draw() {
     radioIcon4.drawIcon();
     radioIcon5.drawIcon();
     radioB1.tab();
+    
+    suchfeld.drawFeld();
+    suchfeld.sucheGo();
 
     //JSONArray radioListe = loadJSONArray("radioliste.json");
     //radioName = radioListe.getJSONObject(radioControl).getString("name");
@@ -728,7 +731,7 @@ void draw() {
   if (!mousePressed) {
     controlW = 8;
   }
-  textSize(12);
-  text(mouseX +" "+mouseY, mouseX, mouseY);
+  //textSize(12);
+  //text(mouseX +" "+mouseY, mouseX, mouseY);
   // println(radioControl);
 }

@@ -27,19 +27,17 @@ class eingabefeld
 
 void drawFeld() {
 fill(255);
+textSize(20);
 text(txt, xpos+30,ypos+ hoe*0.75);
 rect(xpos+30+textWidth(txt), ypos+0.1*hoe, 2, hoe*0.8);
 }
 
   void click() {
-    if (hover()) {
-      active = true;
-      txt = "";
-    }
+    
     if (!hover()) {
-      active = false;
+      controlRadioEdit = 20;
 
-      txt = "Neues Radio";
+      
     }
   } 
   
