@@ -7,10 +7,13 @@ JSONObject wetter_temp;
 String apikey= "1100de2b457cd201f814651dded49806";
 
 
+
 float lat = 48.78;
 float lon = 9.18;
 
 suchfeld suchfeld;
+
+eingabefeld radioEingabe, radioEingabe1, radioEingabe2, radioEingabe3, radioEingabe4, radioEingabe5;
 
 wetter wetter;
 
@@ -27,6 +30,8 @@ radioButton radioB3;
 radioButton radioB4;
 radioButton radioB5;
 radioButton radioB6;
+
+icon radioIcon0,radioIcon1, radioIcon2, radioIcon3, radioIcon4,radioIcon5,radioIcon6;
 
 wetterButton wetterB0, wetterB1, wetterB2, wetterB3, wetterB4;
 
@@ -62,6 +67,7 @@ PShape WeckerIcon;
 PShape LeiseIcon;
 PShape LautIcon;
 PShape MuteIcon;
+PShape editIcon;
 
 PFont robotoLight;
 PFont robotoBold;
@@ -106,6 +112,9 @@ void setup() {
   minim = new Minim(this);
 
   Datum();
+  
+  
+  
 
   JSONArray radioListe = loadJSONArray("radioliste.json");  
 
@@ -116,6 +125,7 @@ void setup() {
     radioNamenListe[i] = sender.getString("name");
     radioImgListe[i] = sender.getString("img");
   }
+
 
   //JSONObject wetterVorhersage = loadJSONObject("http://api.openweathermap.org/data/2.5/forecast?lat="
   //    + lat +"&lon=" + lon + "&appid=" + apikey +"&units=metric&lang=de"); 
@@ -177,6 +187,7 @@ void setup() {
   LautIcon = loadShape("sound-09.svg");
   LeiseIcon = loadShape("sound-08.svg");
   MuteIcon = loadShape("mute-10.svg");
+  editIcon = loadShape("edit-24.svg");
 
   upIcon = loadShape("pfeil-05.svg");
   downIcon = loadShape("pfeil-06.svg");
@@ -201,6 +212,14 @@ void setup() {
   radioB3 = new radioButton(290, 3);
   radioB4 = new radioButton(340, 4);
   radioB5 = new radioButton(390, 5);
+  
+  radioEingabe = new eingabefeld(140,0);
+  radioEingabe1 = new eingabefeld(190,1);
+  radioEingabe2 = new eingabefeld(240,2);
+  radioEingabe3 = new eingabefeld(290,3);
+  radioEingabe4= new eingabefeld(340,4);
+  radioEingabe5 = new eingabefeld(390,5);
+  
 
   wetterB0 = new wetterButton(20, 0);
   wetterB1 = new wetterButton(192, 1);
@@ -213,7 +232,12 @@ void setup() {
 
 
   radioPlayer = minim.loadFile(urlStream);
-
+  radioIcon0 = new icon(845,160, 20,20, editIcon,10);
+  radioIcon1 = new icon(845,210, 20,20, editIcon,11);
+  radioIcon2 = new icon(845,260, 20,20, editIcon,12);
+  radioIcon3 = new icon(845,310, 20,20, editIcon,13);
+  radioIcon4 = new icon(845,360, 20,20, editIcon,14);
+  radioIcon5 = new icon(845,410, 20,20, editIcon,15);
 
   analogUhr = new icon(320, 130, 40, 40, timeIcon, 1);
   digitalUhr = new icon(380, 130, 40, 40, digitalIcon, 2);
@@ -244,6 +268,7 @@ int controlC = 1;
 int controlW = 8;
 int controlWetter = 5;
 int controlM = 1;
+int controlRadioEdit = 20;
 int ue1 = 40;
 boolean WeckerActive = false;
 int radioControl = int (random(0, 5));
@@ -280,6 +305,14 @@ void mouseReleased() {
     radioB3.click();
     radioB4.click();
     radioB5.click();
+    
+    radioIcon0.Edit();
+     radioIcon1.Edit();
+      radioIcon2.Edit();
+       radioIcon3.Edit();
+        radioIcon4.Edit();
+         radioIcon5.Edit();
+       
   }
 
   if (screenZ == 2) {
@@ -307,6 +340,25 @@ void keyPressed() {
 
   suchfeld.eingabe();
   wecker1.textEingabe();
+  
+  if(screenZ==3) {
+  if(controlRadioEdit == 10) {
+  radioEingabe.eingabe();
+  } else if (controlRadioEdit == 11) {
+  radioEingabe1.eingabe();
+  }else if (controlRadioEdit == 12) {
+  radioEingabe2.eingabe();
+  }else if (controlRadioEdit == 13) {
+  radioEingabe3.eingabe();
+  }else if (controlRadioEdit == 14) {
+  radioEingabe4.eingabe();
+  }else if (controlRadioEdit == 15) {
+  radioEingabe5.eingabe();
+  }
+  
+  
+  
+  }
 }
 
 void draw() {
@@ -521,23 +573,109 @@ void draw() {
 
     fill(70);
 
-    rect((width/2)+5, 140, (width/2)-25, 280);
+    rect((width/2)+5, 140, (width/2)-75, 280);
 
     suchfeld.drawFeld();
     suchfeld.sucheGo();
 
+    if (controlRadioEdit == 10) {
+    radioEingabe.active = true;
+    
+    radioEingabe.drawFeld();
+    radioEingabe.EditEnter();
+    
+    radioB1.drawButton();
+    radioB2.drawButton();
+    radioB3.drawButton();
+    radioB4.drawButton();
+    radioB5.drawButton();
+  }
+    else if (controlRadioEdit == 11){
+     
+     
+     radioEingabe1.active = true;
+     radioEingabe1.drawFeld();
+     radioEingabe1.EditEnter();
+     
+    radioB0.drawButton();
+    radioB2.drawButton();
+    radioB3.drawButton();
+    radioB4.drawButton();
+    radioB5.drawButton();
+    } else if (controlRadioEdit == 12){
+    
+    
+    radioEingabe2.active = true;
+    radioEingabe2.drawFeld();
+    radioEingabe2.EditEnter();
+    
+    radioB0.drawButton();
+    radioB3.drawButton();
+    radioB1.drawButton();
+    radioB4.drawButton();
+    radioB5.drawButton();
+    } else if (controlRadioEdit == 13){
+    
+    
+    radioEingabe3.active = true;
+    radioEingabe3.drawFeld();
+    radioEingabe3.EditEnter();
+    
+    radioB0.drawButton();
+    radioB2.drawButton();
+    radioB4.drawButton();
+    radioB1.drawButton();
+    radioB5.drawButton();
+    } else if (controlRadioEdit == 14){
+    
+    
+    radioEingabe4.active = true;
+    radioEingabe4.drawFeld();
+    radioEingabe4.EditEnter();
+    
+    radioB0.drawButton();
+    radioB2.drawButton();
+    radioB3.drawButton();
+    radioB5.drawButton();
+    radioB1.drawButton();
+    } else if (controlRadioEdit == 15){
+    
+    
+    radioEingabe5.active = true;
+    radioEingabe5.drawFeld();
+    radioEingabe5.EditEnter();
+    
+    radioB0.drawButton();
+    radioB2.drawButton();
+    radioB3.drawButton();
+    radioB4.drawButton();
+    radioB1.drawButton();
+    }else {
     radioB0.drawButton();
     radioB1.drawButton();
     radioB2.drawButton();
     radioB3.drawButton();
     radioB4.drawButton();
     radioB5.drawButton();
-
+    
+    }
+    
+    
+    
+    radioIcon0.drawIcon();
+    
+    
+    
+    radioIcon1.drawIcon();
+    radioIcon2.drawIcon();
+    radioIcon3.drawIcon();
+    radioIcon4.drawIcon();
+    radioIcon5.drawIcon();
     radioB1.tab();
 
-    JSONArray radioListe = loadJSONArray("radioliste.json");
-    radioName = radioListe.getJSONObject(radioControl).getString("name");
-    radioGenre = radioListe.getJSONObject(radioControl).getString("genre");
+    //JSONArray radioListe = loadJSONArray("radioliste.json");
+    //radioName = radioListe.getJSONObject(radioControl).getString("name");
+    //radioGenre = radioListe.getJSONObject(radioControl).getString("genre");
 
     if (play) {
       pushStyle();
@@ -551,7 +689,7 @@ void draw() {
       textFont(robotoBold);
       textSize(25);
 
-      text(radioName, 210, 360);
+      text(radioNamenListe[radioControl], 210, 360);
       textFont(robotoThin);
       textSize(20);
       text(radioGenre, 210, 390);
@@ -568,7 +706,7 @@ void draw() {
       textFont(robotoBold);
       textSize(25);
 
-      text(radioName, 210, 360);
+      text(radioNamenListe[radioControl], 210, 360);
       textFont(robotoThin);
       textSize(20);
       text(radioGenre, 210, 390);

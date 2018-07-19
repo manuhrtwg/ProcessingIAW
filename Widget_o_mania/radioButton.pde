@@ -5,7 +5,7 @@ class radioButton {
   int radioC;
   int xpos = (width/2)+5;
   int hoe = 48;
-  int br = (width/2)-25;
+  int br = (width/2)-75;
 
 JSONArray radioListe = loadJSONArray("radioliste.json");
    
@@ -21,13 +21,13 @@ JSONArray radioListe = loadJSONArray("radioliste.json");
 
   void drawButton() {
     
-    radioName = radioListe.getJSONObject(radioC).getString("name");
+    radioName = radioNamenListe[radioC];
     radioImg = radioListe.getJSONObject(radioC).getString("img");
     radioGenre = radioListe.getJSONObject(radioC).getString("genre");
 
     if (hover()) {
       fill(20);
-      rect((width/2)+5, ypos, (width/2)-25, hoe);
+      rect((width/2)+5, ypos, (width/2)-75, hoe);
       fill(255);
       textFont(robotoBold);
       textSize(20);
@@ -40,7 +40,7 @@ JSONArray radioListe = loadJSONArray("radioliste.json");
     } else {
 
       fill(40);
-      rect((width/2)+5, ypos, (width/2)-25, hoe);
+      rect((width/2)+5, ypos, (width/2)-75, hoe);
       textFont(robotoRegular);
       fill(255);
       textSize(20);
@@ -56,7 +56,7 @@ JSONArray radioListe = loadJSONArray("radioliste.json");
     if (mouseDown() || radioControl == radioC) {
 
       fill(10);
-      rect((width/2)+5, ypos, (width/2)-25, hoe);
+      rect((width/2)+5, ypos, (width/2)-75, hoe);
 
       fill(255);
       textFont(robotoBold);

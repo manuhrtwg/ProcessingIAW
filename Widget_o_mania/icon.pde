@@ -34,7 +34,7 @@ void drawBox() {
  
  
  void drawIcon() {
-  if(hover() || (controlC == control) || controlW == control ) {
+  if(hover() || (controlC == control) || controlW == control || controlRadioEdit ==control ) {
  
   shape(name, xpos-(br*0.1), ypos-(hoe*0.1), br*1.2, hoe*1.2);
   } else {
@@ -63,7 +63,14 @@ void drawBox() {
  }
  }
  
- 
+ void Edit(){
+   
+   if(hover()) {
+   controlRadioEdit = control;
+   }
+
+}
+
  
  
  
