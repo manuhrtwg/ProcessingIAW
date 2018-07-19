@@ -4,6 +4,9 @@ class wetter {
   int humidity;
   Float pressure;
   String beschreibung;
+  String wetterIconID;
+  String wetterIconURL;
+  PShape wetterIcon;
   
   PShape humidityIcon = loadShape("feucht-11.svg");
 
@@ -27,8 +30,8 @@ class wetter {
     pushStyle();
     stroke(255);
     strokeWeight(2);
-  line(400,300,880,300);
-  line(400,300,400,150);
+  line(400,290,880,290);
+  line(400,290,400,150);
   
   for (int i = -20; i < 50; i = i+10) {
     stroke(100);
@@ -43,6 +46,14 @@ class wetter {
     noStroke();
     
     }
+    
+   for(int i = 0; i < 24; i++) {
+   stroke(255);
+   
+   line(410+i*20,290,410+i*20,295);
+   text(i, 408+i*20,308);
+   }
+   
   popStyle();
   
   }
@@ -60,27 +71,38 @@ class wetter {
 
     JSONObject wetterHeute;
     wetterHeute = loadJSONObject("http://api.openweathermap.org/data/2.5/weather?lat=" + lat +"&lon=" + lon + "&appid=" + apikey +"&units=metric&lang=de"); 
-
+    
     
     stadt = wetterHeute.getString("name");
     temp = wetterHeute.getJSONObject("main").getFloat("temp");
     humidity = wetterHeute.getJSONObject("main").getInt("humidity");
     pressure = wetterHeute.getJSONObject("main").getFloat("pressure");
     beschreibung = wetterHeute.getJSONArray("weather").getJSONObject(0).getString("description");
-    
+    wetterIconID = wetterHeute.getJSONArray("weather").getJSONObject(0).getString("icon");
     //println(wetterHeute);
+    
+    wetterIconURL = wetterIconID + ".svg";
+    wetterIcon = loadShape(wetterIconURL);
   }
-
+  
   void drawWetterHeute() {
+    pushStyle();
     fill(255);
+    textAlign(CENTER);
     textFont(robotoRegular);
-    text(int(temp)+"°", 80, 190);
+    textSize(25);
+    text(int(temp)+"°", 120, 200);
     textSize(20);
-    text(stadt, 80, 215);
-    shape(humidityIcon, 80, 228, 20,20);
+    text(stadt, 120, 170);
+    //shape(humidityIcon, 140, 190, 20,20);
     textFont(robotoLight);
     textSize(20);
-    text(humidity+"%", 110, 245);
+    //text(humidity+"%", 110, 190);
+    textSize(15);
+
+    text(beschreibung, 120, 305);
+    shape(wetterIcon,83,210, 70,70);
+    popStyle();
     
     
   }

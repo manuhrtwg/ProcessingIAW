@@ -9,6 +9,7 @@ class suchfeld {
 
   String radio0;
   String radio1;
+  String radio1_1;
   String radio2;
   String radio3;
   String radio4;
@@ -25,6 +26,7 @@ class suchfeld {
     hoe = 40;
     radio0 = "radio free fm";
     radio1 = "swr 3";
+    radio1_1="swr3";
     radio2 = "bigfm";
     radio3 = "dasding";
     radio4 = "jazz radio berlin";
@@ -79,7 +81,7 @@ class suchfeld {
       println(txtLow);
       if (txtLow.equals(radio0) == true) {
         radioControl = 0;
-      } else if (txtLow.equals(radio1) == true) {
+      } else if (txtLow.equals(radio1) == true || txtLow.equals(radio1_1) == true) {
         radioControl = 1;
       } else if (txtLow.equals(radio2) == true) {
         radioControl = 2;

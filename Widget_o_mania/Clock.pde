@@ -80,9 +80,10 @@ void digitalClockSeconds() {
    text(hour,posx,posy);
   }
   
-  int month = month();
-  int day = day();
-  int year = year();
+  Calendar cal = Calendar.getInstance();
+DateFormat formatter = new SimpleDateFormat("EEE, dd.MM.yyyy");
+  String simpleDate = formatter.format (cal.getTime());
+  
  
  
  text(":", posx+abstand*1.8,posy);
@@ -92,7 +93,7 @@ void digitalClockSeconds() {
  
  textFont(robotoLight, 30);
 
- text(day+"."+month+"."+year, posx+ abstand*2.5, posy+ abstand*1.5);
+ text(simpleDate, posx+ abstand*2.5, posy+ abstand*1.5);
 }
 
 

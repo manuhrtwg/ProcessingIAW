@@ -1,5 +1,6 @@
 import ddf.minim.*;
-
+import java.util.*;
+import  java.text.*;
 JSONArray wettervorhersageTemp;
 JSONObject wetter_temp;
 
@@ -92,13 +93,19 @@ Minim minim;
 AudioPlayer weckerAlarm;
 AudioPlayer radioPlayer;
 
-
+void Datum() {
+Calendar cal = Calendar.getInstance();
+DateFormat formatter = new SimpleDateFormat("EEE, yyyy.MM.dd");
+System.out.println(formatter.format (cal.getTime()));
+}
 
 void setup() {
   size(900, 600);
   pixelDensity(displayDensity());
   smooth(2);
   minim = new Minim(this);
+  
+  Datum();
 
   JSONArray radioListe = loadJSONArray("radioliste.json");  
 
@@ -184,7 +191,7 @@ void setup() {
   playButton1 = new buttonOnOff(195, 220, 2);
   playButton2 = new buttonOnOff(700, 17, 1);
 
-  muteButton = new buttonOnOff(650, 12, 1);
+  muteButton = new buttonOnOff(660, 12, 1);
 
   Schlummertaste = new textButton(560, 330, 200, 40, 1, "5 min Schlummern", 20 );
 
@@ -228,6 +235,8 @@ void setup() {
   wetterB3.wetterVorhersage();
   wetterB4.wetterVorhersage();
   wetter.wetterHeute();
+  
+  
 };
 
 int screenZ = 1;
@@ -280,6 +289,11 @@ void mouseReleased() {
     wetterB3.click();
     wetterB4.click();
   }
+  
+  if(mouseX <140 && mouseY <50) {
+  screenZ = 1;
+  }
+  
 }
 
 void mouseClicked() {
@@ -311,7 +325,7 @@ void draw() {
   fill(0);
   rect(0, 0, width, 50);
 
-
+  
 
   muteButton.drawMute();
 
@@ -357,8 +371,12 @@ void draw() {
     weckerAlarm.pause();
   }
 
-
+if(mouseX <140 && mouseY <50) {
   shape(WeckerIcon, 42, 9, 35, 35);
+  } else {
+  shape(WeckerIcon, 43, 10, 33, 33);
+  }
+  
 
   if (WeckerActive) {
 
@@ -469,7 +487,7 @@ void draw() {
   if (screenZ == 2) {
 
     fill(100);
-    rect(20, 360, 840, 120);
+    rect(20, 340, 840, 150);
     fill (0, 200, 200);
     textSize(ue1);
     text("Wetter", 40, 100);
